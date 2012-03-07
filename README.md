@@ -14,3 +14,9 @@ parser and can just scape by with some dirty regex magic.
 
 After it is done it will get fed downstream to a JS compressor to optimise it 
 
+
+A more robust method if anyone it looking for it is probably to go hunting 
+down the LLVM direction, Perl -> LLMV -> Emscriptem -> Javascript
+
+
+
