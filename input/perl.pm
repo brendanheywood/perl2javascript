@@ -15,9 +15,9 @@ sub hello_world2{
 }
 
 sub whats_your_name  {
-	my ($name, $name2) = @_;
+	my ($name1, $name2) = @_;
 
-	my $sentence = "I $name1 really like $name2 ";
+	my $sentence = "I '$name1' really like \"$name2\" and also \$MONEY\$ !\n";
 
 	return $sentence;
 }
@@ -27,5 +27,15 @@ sub hello_world3 {
 
 my $print = " hello print bug ";
 print hello_world();
+my $fred = 'fred';
+my $will = 'will';
+my $swill = "s$will";
+print whats_your_name($fred, $will);
+
+my $line = "I hope $fred doesn't like himself $fred cause $will hates $fred \n";
+
+print "$swill";
+print "$swill\n";
+
 
 1;

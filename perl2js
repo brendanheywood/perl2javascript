@@ -37,13 +37,6 @@ $source =~ s/
 
 
 
-# swap join
-
-# swap substring
-
-# swap regex?
-
-
 ## swap my for var
 $source =~ s/
 	(\n\s*)           # 1
@@ -54,9 +47,42 @@ $source =~ s/
 
 
 
+# swap out some escaped chars with unicode equivalents to keep it safe and easy for the other regex's
+$source =~ s/\\\"/\\u0022/gmsx;
+$source =~ s/\\\$/\\u0024/gmsx;
 
 
-# swap variables inside strings expressions
+## swap variables inside " strings
+
+sub replace_vars {
+	($in) = @_;
+	$in =~ s/
+		(\$)              # 1 $
+		(\w+)             # 2 var
+		(\W)              # 3 stuff
+		/\"+$1$2+\"$3/gmsx;
+	return "\"$in\"";
+}
+
+$source =~ s/
+	(")               # 1 "
+	([^"]*)           # 2 stuff that ain't a "
+	(")               # 3 "
+	/replace_vars($2)/egmsx;
+
+
+
+
+
+
+# swap join
+
+# swap substring
+
+# swap regex?
+
+
+
 
 # remove trailing 1;
 $source =~ s/1;$//g;
