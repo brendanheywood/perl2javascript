@@ -7,7 +7,7 @@ function hello_world() {
 function whats_my_name($name) {
 	
 
-	return "Whats var name $name";
+	return "Whats var name "+$name+"";
 }
 
 function hello_world2(){
@@ -29,12 +29,12 @@ var $print = " hello print bug ";
 document.write( hello_world() );
 var $fred = 'fred';
 var $will = 'will';
-var $swill = "s$will";
+var $swill = "s"+$will+"";
 document.write( whats_your_name($fred, $will) );
 
 var $line = "I hope "+$fred+" doesn't like himself "+$fred+" cause "+$will+" hates "+$fred+" \n";
 
-document.write( "$swill" );
+document.write( ""+$swill+"" );
 document.write( ""+$swill+"\n" );
 
 

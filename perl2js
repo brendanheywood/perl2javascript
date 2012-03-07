@@ -59,7 +59,7 @@ sub replace_vars {
 	$in =~ s/
 		(\$)              # 1 $
 		(\w+)             # 2 var
-		(\W)              # 3 stuff
+		(\W|$)            # 3 stuff or end of line
 		/\"+$1$2+\"$3/gmsx;
 	return "\"$in\"";
 }
