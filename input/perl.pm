@@ -37,5 +37,16 @@ my $line = "I hope $fred doesn't like himself $fred cause $will hates $fred \n";
 print "$swill";
 print "$swill\n";
 
+print "\n\n\n";
+
+my $variable = '3'; # This is a variable
+
+#foreach my $animal ( @myarray ){
+#	print "Animal: $animal\n";
+#}
+
+#my @myarray = ['pig', 'dog', 'horse'];
+
+
 
 1;

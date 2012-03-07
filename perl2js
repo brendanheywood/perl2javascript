@@ -71,8 +71,36 @@ $source =~ s/
 	/replace_vars($2)/egmsx;
 
 
+## Get rid of empty string literals
+$source =~ s/
+	(\+)              # 1 +
+	(")               # 2 "
+	(")               # 3 "
+	//egmsx;
+$source =~ s/
+	(")               # 1 "
+	(")               # 2 "
+	(\+)              # 3 +
+	//egmsx;
 
 
+
+## get rid of $ on the front of everything
+$source =~ s/
+	(\$)              # 1 $
+	(\w+)             # 2 var
+	(\W|$)            # 3 stuff or end of line
+	/$2$3/gmsx;
+
+
+## replace comments
+$source =~ s/
+	(\n)               # 1 new line
+	([^\n]*)           # 2 some optional code
+	(\#)               # 3 #
+	([^\n]*)           # 4 the comment
+	(?!\n)             # 5 end of line or file (zero width assertion)
+	/$1$2\/\/$4$5/gmsx;
 
 
 # swap join
@@ -81,6 +109,9 @@ $source =~ s/
 
 # swap regex?
 
+# swap out some escaped chars with unicode equivalents to keep it safe and easy for the other regex's
+$source =~ s/\\u0022/\\"/gmsx;
+$source =~ s/\\u0024/\\\$/gmsx;
 
 
 
