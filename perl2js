@@ -1,12 +1,40 @@
 #!/usr/bin/perl
 
+## rules of thumb
+# no regex should contain a .
+# most should be non-greedy
+
+undef $/;
 
 $source = join ('', <>);
 
-# swap over functions with no params
-$source =~ s/sub\s(\S*)(\s)/function $1()$2/g;
 
-# swap over functions with params
+## swap over functions with params
+$source =~ s/
+	(sub\s+)          # 1 sub
+	(\w+?)            # 2 function
+	(\s*{\s*)         # 3 {
+	(my\s*)           # 4 my
+	(\()              # 5 (
+	([\$\w\s\,]*?)    # 6 $args    Can be $ letters or ,
+	(\))              # 7 )
+	(\s*=\s*\@_;)     # 8 = @_; 
+	/function $2($6)$3/gmsx;
+
+## swap over functions with no params
+$source =~ s/
+	(sub\s)           # 1 sub
+	(\w+?)            # 2 function
+	(\s*{\s*)         # 3 {
+	/function $2()$3/gmsx;
+
+
+## swap my for var
+$source =~ s/
+	(my)              # 1 my
+	(\s+?)            # 2 
+	/var$2/gmsx;
+
 
 
 # swap join
@@ -16,10 +44,20 @@ $source =~ s/sub\s(\S*)(\s)/function $1()$2/g;
 # swap regex?
 
 
+## swap my for var
+$source =~ s/
+	(print)           # 1 print
+	(.+?)            # 2 something
+	(;)               # ;
+	/document.write($2 )$3/gmsx;
+
+
+
+
+
 # swap variables inside strings expressions
 
 # remove trailing 1;
-
 $source =~ s/1;$//g;
 
 
