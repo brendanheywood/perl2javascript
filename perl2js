@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+
+
+$source = join ('', <>);
+
+# swap over functions with no params
+$source =~ s/sub\s(\S*)(\s)/function $1()$2/g;
+
+# swap over functions with params
+
+
+# swap join
+
+# swap substring
+
+# swap regex?
+
+
+# swap variables inside strings expressions
+
+# remove trailing 1;
+
+$source =~ s/1;$//g;
+
+
+print $source;
+
