@@ -46,10 +46,11 @@ $source =~ s/
 
 ## swap my for var
 $source =~ s/
-	(print)           # 1 print
-	(.+?)            # 2 something
-	(;)               # ;
-	/document.write($2 )$3/gmsx;
+	(\n\s*)           # 1
+	(print)           # 2 print
+	(.+?)             # 3 something
+	(;)               # 4;
+	/$1document.write($3 )$4/gmsx;
 
 
 

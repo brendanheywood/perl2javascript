@@ -25,7 +25,7 @@ function hello_world3() {
 	return "Hello, world!\n";
 }
 
+var $print = " hello print bug ";
 document.write( hello_world() );
-
 
 

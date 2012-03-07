@@ -25,7 +25,7 @@ sub hello_world3 {
 	return "Hello, world!\n";
 }
 
+my $print = " hello print bug ";
 print hello_world();
-
 
 1;
