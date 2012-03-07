@@ -7,5 +7,10 @@ likely offend Douglas Crockford
 # HERE BE DRAGONS!
 
 
+The use case for this is to just get it over the line, it doesn't need to be
+pretty and it only needs to support a very small subset of perl. It also
+doesn't need to support deeply nested expressions so we do't need a full
+parser and can just scape by with some dirty regex magic.
 
+After it is done it will get fed downstream to a JS compressor to optimise it 
 
