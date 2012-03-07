@@ -58,9 +58,9 @@ document.write( "\n" );
 
 
 
-//foreach var animal ( myarray ){
-//	print "Animal: "+animal+"\n";
-//}
+for (var _animal in  myarray ){var animal =  myarray [_animal];
+	document.write( "Animal: "+animal+"\n" );
+}
 
 
 

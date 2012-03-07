@@ -7,3 +7,6 @@ swillswill
 pig,dog,horse
 pig,dog,horse
 pigwilldogwillhorse
+Animal: pig
+Animal: dog
+Animal: horse

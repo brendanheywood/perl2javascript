@@ -58,9 +58,9 @@ print "\n";
 
 
 
-#foreach my $animal ( @myarray ){
-#	print "Animal: $animal\n";
-#}
+foreach my $animal ( @myarray ){
+	print "Animal: $animal\n";
+}
 
 
 
