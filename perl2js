@@ -90,7 +90,7 @@ $source =~ s/
 
 $source =~ s/
 	(join)            # 1 join
-	(\s+)             # 2 
+	(\s+)             # 2  
 	(                 # 3 the delimiter
 		('[^']*') # 4 a ' string
 		|         # or
@@ -99,7 +99,7 @@ $source =~ s/
 		(\$\w+)   # 6 variable
 	)
 	(,)               # 7 ,
-	(\s+)             # 8 whitespace
+	(\s+)             # 8 whitespace 
 	(                 # 9 an array expression
 		(@\w+)       # an array variable
 	)
