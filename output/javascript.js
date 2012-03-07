@@ -41,11 +41,26 @@ document.write( "\n\n\n" );
 
 var variable = '3'; // This is a variable
 
-//foreach var animal ( @myarray ){
+var myarray = ['pig', 'dog', 'horse'];
+
+
+document.write( myarray.join(',') );
+document.write( "\n" );
+
+document.write( myarray.join(",") );
+document.write( "\n" );
+
+//print join(',', myarray);
+//print "\n";
+
+document.write( myarray.join(will) );
+document.write( "\n" );
+
+
+
+//foreach var animal ( myarray ){
 //	print "Animal: "+animal+"\n";
 //}
-
-//var @myarray = ['pig', 'dog', 'horse'];
 
 
 

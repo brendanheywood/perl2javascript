@@ -41,11 +41,26 @@ print "\n\n\n";
 
 my $variable = '3'; # This is a variable
 
+my @myarray = ('pig', 'dog', 'horse');
+
+
+print join ',', @myarray;
+print "\n";
+
+print join ",", @myarray;
+print "\n";
+
+#print join(',', @myarray);
+#print "\n";
+
+print join $will, @myarray;
+print "\n";
+
+
+
 #foreach my $animal ( @myarray ){
 #	print "Animal: $animal\n";
 #}
-
-#my @myarray = ['pig', 'dog', 'horse'];
 
 
 

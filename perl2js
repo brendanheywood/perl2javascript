@@ -85,9 +85,68 @@ $source =~ s/
 
 
 
-## get rid of $ on the front of everything
+## replace static join function with String join method
+
+
+$source =~ s/
+	(join)            # 1 join
+	(\s+)             # 2 
+	(                 # 3 the delimiter
+		('[^']*') # 4 a ' string
+		|         # or
+		("[^"]*") # 5 a " string
+		|         # or
+		(\$\w+)   # 6 variable
+	)
+	(,)               # 7 ,
+	(\s+)             # 8 whitespace
+	(                 # 9 an array expression
+		(@\w+)       # an array variable
+	)
+#	(;)               # 10 ;,
+	/$9.join($3)/gmsx;
+
+
+
+
+
+## convert @array literals 
+$source =~ s/
+	(=)               # 1 =
+	(\s*)             # 2
+	(\()              # 3 (
+	(.*?)             # 4 values
+	(\))              # 5 )
+	/$1$2\[$4\]/gmsx;
+
+
+## Template regex
+#$source =~ s/
+#	/>>>>>>>>>>>>>>>> $1 | $2 | $3 | $4 | $5 | $6 <<<<</gmsx;
+
+
+
+
+
+
+
+
+#print $source;
+#exit;
+
+
+
+
+## get rid of $ on the front of vars
 $source =~ s/
 	(\$)              # 1 $
+	(\w+)             # 2 var
+	(\W|$)            # 3 stuff or end of line
+	/$2$3/gmsx;
+
+## get rid of @ on the front of arrays
+$source =~ s/
+	(\@)              # 1 @
 	(\w+)             # 2 var
 	(\W|$)            # 3 stuff or end of line
 	/$2$3/gmsx;
@@ -108,6 +167,9 @@ $source =~ s/
 # swap substring
 
 # swap regex?
+
+
+
 
 # swap out some escaped chars with unicode equivalents to keep it safe and easy for the other regex's
 $source =~ s/\\u0022/\\"/gmsx;
